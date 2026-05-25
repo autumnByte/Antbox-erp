@@ -2,7 +2,7 @@
 // modules/register.js  —  Registration modal + API integration
 // ═══════════════════════════════════════════════════════════════════
 
-const REG_API_BASE = 'http://127.0.0.1:8000/api';
+const REG_API_BASE = 'https://antbox-erp.onrender.com/api';
 
 // ─── MODAL CONTROLS ──────────────────────────────────────────────
 window.openRegisterModal = function () {

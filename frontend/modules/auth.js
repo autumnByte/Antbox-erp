@@ -2,7 +2,7 @@
 // modules/auth.js  —  Authentication, session, API helper
 // ═══════════════════════════════════════════════════════════════════
 
-const API_BASE = "http://127.0.0.1:8000/api";
+const API_BASE = "https://antbox-erp.onrender.com/api";
 
 // ─── GLOBAL STATE ─────────────────────────────────────────────────
 window.antboxState = window.antboxState || {
@@ -68,7 +68,7 @@ window.checkConnectivity = async function () {
   const badge = document.getElementById("connectivityBadge");
   const label = document.getElementById("connectivityLabel");
   try {
-    await fetch("http://127.0.0.1:8000/health");
+    await fetch("https://antbox-erp.onrender.com/health");
     if (badge) badge.className = "connectivity-badge live";
     if (label) label.textContent = "⚡ Live";
   } catch {
