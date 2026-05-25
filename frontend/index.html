@@ -1,0 +1,1814 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Antbox — Core Operational Hub</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/antbox-brand.css" />
+  </head>
+  <body>
+    <!-- ═══════════════════════════════ LANDING PAGE ═══════════════════════════════ -->
+    <div id="landing-page">
+      <nav class="landing-nav">
+        <div class="landing-logo">
+          <img src="assets/antbox-logo-transparent.png" alt="Antbox" class="nav-logo-img" />
+        </div>
+        <ul class="landing-nav-links">
+          <li><a href="https://theantbox.com/" target="_blank" rel="noopener noreferrer">Platform</a></li>
+          <li><a href="cohorts.html">Cohorts</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+        <div style="display: flex; gap: 8px; align-items: center">
+          <button
+            class="btn-ghost"
+            onclick="openRegisterModal()"
+            style="padding: 10px 20px"
+          >
+            Register
+          </button>
+          <button class="btn-primary" onclick="openLoginModal()">
+            Sign In
+          </button>
+        </div>
+      </nav>
+      <div class="landing-hero">
+        <div class="hero-label">AI-Driven Talent Readiness</div>
+        <h1 class="hero-title">ANTBOX<br /><span>CORE</span><br />HUB</h1>
+        <p class="hero-subtitle">
+          The centralized operational engine for the full talent supply chain —
+          from sprint learners to deployed Fintech interns.
+        </p>
+
+        <div class="role-pills">
+          <span class="role-pill">Bootcamp Student</span>
+          <span class="role-pill">Active Intern</span>
+          <span class="role-pill">Internal Staff</span>
+          <span class="role-pill active-purple">HR / Admin</span>
+        </div>
+
+        <div class="hero-cta-row">
+          <button class="btn-primary" onclick="openLoginModal()">
+            Access Dashboard
+          </button>
+          <button class="btn-ghost" onclick="openDocsModal()">View Docs</button>
+        </div>
+
+        <div class="hero-bg-text">ANTBOX</div>
+      </div>
+
+      <!-- ═══════════════════ LANDING SECTIONS ═══════════════════ -->
+
+      <footer class="landing-footer">
+        <div class="footer-logo">
+          <img src="assets/antbox-logo.png" alt="Antbox" class="nav-logo-img" style="height:20px;opacity:0.75;" />
+        </div>
+        <div style="font-size: 12px; color: var(--muted)">
+          © 2026 Antbox. AI-Driven Talent Operations.
+        </div>
+      </footer>
+    </div>
+
+    <!-- ═══════════════════════════════ LOGIN MODAL ═══════════════════════════════ -->
+    <div class="modal-overlay" id="loginModal">
+      <div class="modal-card" style="position: relative">
+        <button class="modal-close" onclick="closeLoginModal()"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+        <div class="modal-title">Sign In</div>
+        <div class="modal-subtitle">
+          Access your Antbox workspace via your role identity.
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input
+            type="email"
+            class="form-input"
+            placeholder="name@antbox.io"
+            id="loginEmail"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-input"
+            placeholder="••••••••"
+            id="loginPwd"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Role Portal</label>
+          <select class="form-select" id="loginRole">
+            <option value="student">Bootcamp Student</option>
+
+            <option value="intern">Active Intern</option>
+
+            <option value="staff">Internal Staff</option>
+
+            <option value="admin">HR / Admin</option>
+          </select>
+        </div>
+        <button
+          class="btn-primary"
+          style="width: 100%; margin-top: 8px; border-radius: 12px"
+          onclick="doLogin()"
+        >
+          Authenticate
+        </button>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════ REGISTER MODAL ═══════════════════════════════ -->
+    <div class="modal-overlay" id="registerModal">
+      <div
+        class="modal-card"
+        style="position: relative; max-height: 90vh; overflow-y: auto"
+      >
+        <button class="modal-close" onclick="closeRegisterModal()"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+        <div class="modal-title">Create Account</div>
+        <div class="modal-subtitle">
+          Join Antbox — your role-based workspace awaits.
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input
+            type="text"
+            class="form-input"
+            placeholder="e.g. Priya Sharma"
+            id="regName"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input
+            type="email"
+            class="form-input"
+            placeholder="name@antbox.io"
+            id="regEmail"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-input"
+            placeholder="••••••••"
+            id="regPwd"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Confirm Password</label>
+          <input
+            type="password"
+            class="form-input"
+            placeholder="••••••••"
+            id="regPwdConfirm"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Role</label>
+          <select class="form-select" id="regRole">
+            <option value="student">Bootcamp Student</option>
+
+            <option value="intern">Active Intern</option>
+
+           
+
+            <option value="staff">Internal Staff</option>
+
+            <option value="admin">HR / Admin</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Track</label>
+          <select class="form-select" id="regTrack">
+            <option value="SDE">SDE — Software Development</option>
+            <option value="GTM">GTM — Go-To-Market / Product</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">College / Institution</label>
+          <input
+            type="text"
+            class="form-input"
+            placeholder="e.g. IIT Bombay"
+            id="regCollege"
+          />
+        </div>
+        <button
+          class="btn-primary"
+          style="width: 100%; margin-top: 8px; border-radius: 12px"
+          onclick="doRegister()"
+        >
+          Create Account
+        </button>
+        <div
+          style="
+            text-align: center;
+            margin-top: 16px;
+            font-size: 12px;
+            color: var(--muted);
+          "
+        >
+          Already have an account?
+          <a
+            href="#"
+            onclick="
+              closeRegisterModal();
+              openLoginModal();
+              return false;
+            "
+            style="color: var(--purple); font-weight: 600"
+            >Sign In</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════ DOCS MODAL ═══════════════════════════════ -->
+    <div class="modal-overlay" id="docsModal">
+      <div
+        class="modal-card"
+        style="
+          position: relative;
+          width: 600px;
+          max-width: 95vw;
+          max-height: 88vh;
+          overflow-y: auto;
+        "
+      >
+        <button class="modal-close" onclick="closeDocsModal()"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+        <div class="modal-title" id="docsModalTitle">Documentation</div>
+        <div class="modal-subtitle" id="docsModalSub"></div>
+        <div id="docsModalBody" style="margin-top: 8px"></div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════ NOTIFICATION DRAWER ═══════════════════════════════ -->
+    <div id="notifDrawer" class="notif-drawer">
+      <div class="notif-drawer-header">
+        <div style="font-size: 15px; font-weight: 700">Notifications</div>
+        <button
+          onclick="closeNotifDrawer()"
+          style="
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: var(--cream);
+            opacity: 0.6;
+          "
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div id="notifList" class="notif-list">
+        <div
+          style="
+            text-align: center;
+            padding: 32px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 13px;
+          "
+        >
+          Loading…
+        </div>
+      </div>
+    </div>
+    <div
+      id="notifBackdrop"
+      class="notif-backdrop"
+      onclick="closeNotifDrawer()"
+    ></div>
+
+    <!-- ═══════════════════════════════ APP SHELL ═══════════════════════════════ -->
+    <div id="app-shell">
+    
+      <!-- ── Sidebar ── -->
+      <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="sidebar-logo">
+            <img src="assets/antbox-sidebar.png" alt="Antbox" class="sidebar-logo-img" />
+          </div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin-bottom: 12px;
+            "
+          >
+            <div
+              style="
+                font-size: 11px;
+                font-weight: 600;
+                letter-spacing: 0.5px;
+                color: rgba(255, 255, 255, 0.3);
+                text-transform: uppercase;
+              "
+            >
+              Workspace
+            </div>
+            <button
+              id="notifBell"
+              onclick="openNotifDrawer()"
+              title="Notifications"
+              style="
+                position: relative;
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: rgba(255, 255, 255, 0.4);
+                font-size: 18px;
+                padding: 4px;
+                line-height: 1;
+                transition: color 0.2s;
+              "
+              onmouseover="this.style.color = 'white'"
+              onmouseout="this.style.color = 'rgba(255,255,255,0.4)'"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+              <span id="notifBadge" class="notif-badge" style="display: none"
+                >0</span
+              >
+            </button>
+          </div>
+          <div class="sidebar-user-card">
+            <div class="sidebar-user-name" id="sidebarUserName">Loading…</div>
+            <div class="sidebar-user-role" id="sidebarUserRole">—</div>
+          </div>
+        </div>
+
+        <div class="sidebar-nav" id="sidebarNav">
+          <!-- built by buildSidebar() -->
+        </div>
+
+        <div class="sidebar-footer">
+          <button class="logout-btn" onclick="doLogout()">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" y1="12" x2="9" y2="12" />
+            </svg>
+            Sign Out
+          </button>
+          <div class="connectivity-badge offline" id="connectivityBadge">
+            <div class="conn-dot"></div>
+            <span id="connectivityLabel">◌ Offline</span>
+          </div>
+        </div>
+      </nav>
+
+      <!-- ── Main Content ── -->
+      <main class="main-content" id="mainContent">
+        <!-- ──────────────── STUDENT VIEWS ──────────────── -->
+
+        <div class="page-view" id="view-overview">
+          <div class="page-header">
+            <div>
+              <div class="page-title" id="overviewTitle">Dashboard</div>
+              <div class="page-desc" id="overviewDesc">
+                Welcome back. Here's your operational snapshot.
+              </div>
+            </div>
+            <div class="date-badge" id="dateBadge"></div>
+          </div>
+          <div class="stats-grid" id="statsRow"></div>
+          <div class="content-grid thirds" id="overviewGrid"></div>
+        </div>
+
+        <div class="page-view" id="view-sprints">
+          <div class="page-header">
+            <div>
+              <div class="page-title">Sprint Modules</div>
+              <div class="page-desc">
+                Your active learning track. Complete modules to boost readiness.
+              </div>
+            </div>
+          </div>
+          <div class="content-grid">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Active Sprint — Week 4</div>
+                <button class="card-action">View All</button>
+              </div>
+              <div class="card-body">
+                <div class="sprint-item">
+                  <div class="sprint-icon sde"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div>
+                  <div class="sprint-info">
+                    <div class="sprint-title">REST API Design Patterns</div>
+                    <div class="sprint-meta">SDE Track · 2h estimated</div>
+                  </div>
+                  <span class="sprint-status status-complete">Done</span>
+                </div>
+                <div class="sprint-item">
+                  <div class="sprint-icon sde"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+                  <div class="sprint-info">
+                    <div class="sprint-title">PostgreSQL Schema Design</div>
+                    <div class="sprint-meta">SDE Track · 3h estimated</div>
+                  </div>
+                  <span class="sprint-status status-complete">Done</span>
+                </div>
+                <div class="sprint-item">
+                  <div class="sprint-icon sde"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/></svg></div>
+                  <div class="sprint-info">
+                    <div class="sprint-title">React State Management</div>
+                    <div class="sprint-meta">SDE Track · 4h estimated</div>
+                  </div>
+                  <span class="sprint-status status-active">In Progress</span>
+                </div>
+                <div class="sprint-item">
+                  <div class="sprint-icon gtm"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg></div>
+                  <div class="sprint-info">
+                    <div class="sprint-title">GTM Strategy Framework</div>
+                    <div class="sprint-meta">GTM Track · 2.5h estimated</div>
+                  </div>
+                  <span class="sprint-status status-locked">Locked</span>
+                </div>
+                <div class="sprint-item">
+                  <div class="sprint-icon sde"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/></svg></div>
+                  <div class="sprint-info">
+                    <div class="sprint-title">Unit Testing with Jest</div>
+                    <div class="sprint-meta">SDE Track · 3h estimated</div>
+                  </div>
+                  <span class="sprint-status status-locked">Locked</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Submit Assignment</div>
+              </div>
+              <div class="card-body">
+                <div class="submission-form">
+                  <div>
+                    <label class="form-label">Track</label>
+                    <div class="track-toggle">
+                      <button
+                        class="track-toggle-btn active"
+                        id="trackSDE"
+                        onclick="setTrack('SDE')"
+                      >
+                        SDE
+                      </button>
+                      <button
+                        class="track-toggle-btn"
+                        id="trackGTM"
+                        onclick="setTrack('GTM')"
+                      >
+                        GTM / Product
+                      </button>
+                    </div>
+                  </div>
+                  <div>
+                    <label class="form-label">Assignment Title</label>
+                    <input
+                      type="text"
+                      class="form-input"
+                      placeholder="e.g. Week 4 — REST API Build"
+                    />
+                  </div>
+                  <div id="sdeSubmitField">
+                    <label class="form-label">GitHub Repository URL</label>
+                    <input
+                      type="url"
+                      class="form-input"
+                      placeholder="https://github.com/user/repo"
+                    />
+                  </div>
+                  <div id="gtmSubmitField" style="display: none">
+                    <label class="form-label">Deck / Asset URL</label>
+                    <input
+                      type="url"
+                      class="form-input"
+                      placeholder="https://figma.com/... or slides link"
+                    />
+                  </div>
+                  <button
+                    class="btn-primary"
+                    style="border-radius: 12px"
+                    onclick="submitAssignment()"
+                  >
+                    Submit & Run Validation
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-view" id="view-readiness">
+          <div class="page-header">
+            <div>
+              <div class="page-title">Readiness Score</div>
+              <div class="page-desc">
+                Multi-axis evaluation across pace, quality, and collaboration.
+              </div>
+            </div>
+          </div>
+          <div class="stats-grid cols-3" style="margin-bottom: 28px">
+            <div class="stat-card purple-card">
+              <div class="stat-label">Overall Score</div>
+              <div class="stat-value">82</div>
+              <div class="stat-delta">↑ +6 this week</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Submission Pace</div>
+              <div class="stat-value">91</div>
+              <div class="stat-delta">↑ On Track</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Review Score</div>
+              <div class="stat-value">74</div>
+              <div class="stat-delta down">↓ Needs work</div>
+            </div>
+          </div>
+          <div class="content-grid">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Axis Breakdown</div>
+              </div>
+              <div class="card-body">
+                <div style="margin-bottom: 18px">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-bottom: 4px;
+                      font-size: 13px;
+                      font-weight: 600;
+                    "
+                  >
+                    <span>Technical Depth</span><span>88%</span>
+                  </div>
+                  <div class="progress-bar-track">
+                    <div class="progress-bar-fill" style="width: 88%"></div>
+                  </div>
+                </div>
+                <div style="margin-bottom: 18px">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-bottom: 4px;
+                      font-size: 13px;
+                      font-weight: 600;
+                    "
+                  >
+                    <span>Submission Pacing</span><span>91%</span>
+                  </div>
+                  <div class="progress-bar-track">
+                    <div
+                      class="progress-bar-fill green"
+                      style="width: 91%"
+                    ></div>
+                  </div>
+                </div>
+                <div style="margin-bottom: 18px">
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-bottom: 4px;
+                      font-size: 13px;
+                      font-weight: 600;
+                    "
+                  >
+                    <span>Peer Review Quality</span><span>74%</span>
+                  </div>
+                  <div class="progress-bar-track">
+                    <div
+                      class="progress-bar-fill amber"
+                      style="width: 74%"
+                    ></div>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    style="
+                      display: flex;
+                      justify-content: space-between;
+                      margin-bottom: 4px;
+                      font-size: 13px;
+                      font-weight: 600;
+                    "
+                  >
+                    <span>Attendance Consistency</span><span>79%</span>
+                  </div>
+                  <div class="progress-bar-track">
+                    <div class="progress-bar-fill" style="width: 79%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Attendance Heatmap</div>
+                <span style="font-size: 11px; color: var(--muted)"
+                  >June 2026</span
+                >
+              </div>
+              <div class="card-body">
+                <div
+                  style="
+                    display: grid;
+                    grid-template-columns: repeat(7, 1fr);
+                    gap: 3px;
+                    margin-bottom: 8px;
+                  "
+                >
+                  <div
+                    style="
+                      font-size: 10px;
+                      color: var(--muted);
+                      text-align: center;
+                    "
+                  >
+                    M
+                  </div>
+                  <div
+                    style="
+                      font-size: 10px;
+                      color: var(--muted);
+                      text-align: center;
+                    "
+                  >
+                    T
+                  </div>
+                  <div
+                    style="
+                      font-size: 10px;
+                      color: var(--muted);
+                      text-align: center;
+                    "
+                  >
+                    W
+                  </div>
+                  <div
+                    style="
+                      font-size: 10px;
+                      color: var(--muted);
+                      text-align: center;
+                    "
+                  >
+                    T
+                  </div>
+                  <div
+                    style="
+                      font-size: 10px;
+                      color: var(--muted);
+                      text-align: center;
+                    "
+                  >
+                    F
+                  </div>
+                  <div
+                    style="
+                      font-size: 10px;
+                      color: var(--muted);
+                      text-align: center;
+                    "
+                  >
+                    S
+                  </div>
+                  <div
+                    style="
+                      font-size: 10px;
+                      color: var(--muted);
+                      text-align: center;
+                    "
+                  >
+                    S
+                  </div>
+                </div>
+                <div class="att-grid" id="attGrid"></div>
+                <div
+                  style="
+                    display: flex;
+                    gap: 12px;
+                    margin-top: 12px;
+                    flex-wrap: wrap;
+                  "
+                >
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 4px;
+                      font-size: 11px;
+                      color: var(--muted);
+                    "
+                  >
+                    <div
+                      style="
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 3px;
+                        background: rgba(168, 85, 247, 0.2);
+                      "
+                    ></div>
+                    Present
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 4px;
+                      font-size: 11px;
+                      color: var(--muted);
+                    "
+                  >
+                    <div
+                      style="
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 3px;
+                        background: rgba(232, 84, 84, 0.12);
+                      "
+                    ></div>
+                    Absent
+                  </div>
+                  <div
+                    style="
+                      display: flex;
+                      align-items: center;
+                      gap: 4px;
+                      font-size: 11px;
+                      color: var(--muted);
+                    "
+                  >
+                    <div
+                      style="
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 3px;
+                        background: rgba(245, 158, 11, 0.12);
+                      "
+                    ></div>
+                    Leave
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-view" id="view-leave">
+          <div class="page-header">
+            <div>
+              <div class="page-title">Leave Request</div>
+              <div class="page-desc">
+                Submit absence requests. HR will receive an approval email.
+              </div>
+            </div>
+          </div>
+          <div class="content-grid">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">New Leave Request</div>
+              </div>
+              <div class="card-body">
+                <div class="submission-form">
+                  <div>
+                    <label class="form-label">From Date</label
+                    ><input type="date" class="form-input" />
+                  </div>
+                  <div>
+                    <label class="form-label">To Date</label
+                    ><input type="date" class="form-input" />
+                  </div>
+                  <div>
+                    <label class="form-label">Reason</label
+                    ><input
+                      type="text"
+                      class="form-input"
+                      placeholder="e.g. Medical appointment"
+                    />
+                  </div>
+                  <button
+                    class="btn-primary"
+                    style="border-radius: 12px"
+                    onclick="submitLeave()"
+                  >
+                    Submit Request → HR Inbox
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Leave Balance</div>
+              </div>
+              <div class="card-body">
+                <div class="ledger-row">
+                  <span class="ledger-key">Total Allocated Days</span
+                  ><span class="ledger-val">18</span>
+                </div>
+                <div class="ledger-row">
+                  <span class="ledger-key">Used (Approved)</span
+                  ><span class="ledger-val negative">−5</span>
+                </div>
+                <div class="ledger-row">
+                  <span class="ledger-key">Pending Review</span
+                  ><span class="ledger-val" style="color: var(--amber)">2</span>
+                </div>
+                <div
+                  class="ledger-row"
+                  style="
+                    border-top: 1px solid var(--dark);
+                    margin-top: 8px;
+                    padding-top: 14px;
+                  "
+                >
+                  <span style="font-weight: 700">Available Balance</span>
+                  <span class="ledger-total">11 days</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ──────────────── INTERN / DEPLOYED VIEWS ──────────────── -->
+
+        <div class="page-view" id="view-checkin">
+          <div class="page-header">
+            <div>
+              <div class="page-title">Check-In / Out</div>
+              <div class="page-desc">Log your daily operational presence.</div>
+            </div>
+          </div>
+          <div class="content-grid">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Today's Session</div>
+              </div>
+              <div class="card-body">
+                <div class="checkin-widget">
+                  <div class="checkin-time">
+                    <div class="checkin-clock" id="liveClock">--:--:--</div>
+                    <div class="checkin-date" id="liveDate">--</div>
+                  </div>
+                  <div
+                    style="
+                      text-align: center;
+                      font-size: 13px;
+                      color: var(--muted);
+                      padding: 8px;
+                    "
+                  >
+                    Status:
+                    <strong style="color: var(--dark)" id="checkinStatusText"
+                      >Not Checked In</strong
+                    >
+                  </div>
+                  <div class="checkin-btns">
+                    <button class="btn-checkin in" onclick="doCheckIn()">
+                      ↗ Check In
+                    </button>
+                    <button class="btn-checkin out" onclick="doCheckOut()">
+                      ↙ Check Out
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">This Week's Log</div>
+              </div>
+              <div class="card-body">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Check In</th>
+                      <th>Check Out</th>
+                      <th>Hours</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Mon, Jun 2</td>
+                      <td>09:02 AM</td>
+                      <td>06:15 PM</td>
+                      <td style="font-weight: 700">9h 13m</td>
+                    </tr>
+                    <tr>
+                      <td>Tue, Jun 3</td>
+                      <td>09:17 AM</td>
+                      <td>06:00 PM</td>
+                      <td style="font-weight: 700">8h 43m</td>
+                    </tr>
+                    <tr>
+                      <td>Wed, Jun 4</td>
+                      <td>08:55 AM</td>
+                      <td>06:30 PM</td>
+                      <td style="font-weight: 700">9h 35m</td>
+                    </tr>
+                    <tr>
+                      <td>Thu, Jun 5</td>
+                      <td>
+                        <span style="color: var(--amber); font-weight: 600"
+                          >Leave</span
+                        >
+                      </td>
+                      <td>—</td>
+                      <td>—</td>
+                    </tr>
+                    <tr>
+                      <td>Fri, Jun 6</td>
+                      <td>09:10 AM</td>
+                      <td>05:50 PM</td>
+                      <td style="font-weight: 700">8h 40m</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-view" id="view-ppo">
+          <div class="page-header">
+            <div>
+              <div class="page-title">PPO Tracker</div>
+              <div class="page-desc">
+                Monitor your client deployment milestones and conversion
+                readiness.
+              </div>
+            </div>
+          </div>
+          <div class="ppo-track">
+            <div class="ppo-header">
+              <div>
+                <div class="ppo-company">Razorpay Fintech — Deployment</div>
+                <div style="font-size: 12px; color: var(--muted)">
+                  SDE Track · Started March 2026
+                </div>
+              </div>
+              <div class="ppo-pct">72%</div>
+            </div>
+            <div class="progress-bar-track" style="margin: 0">
+              <div class="progress-bar-fill" style="width: 72%"></div>
+            </div>
+            <div class="ppo-milestones">
+              <div class="ppo-step">
+                <div class="ppo-dot done"></div>
+                <div class="ppo-step-label">Pool</div>
+              </div>
+              <div class="ppo-step">
+                <div class="ppo-dot done"></div>
+                <div class="ppo-step-label">Selected</div>
+              </div>
+              <div class="ppo-step">
+                <div class="ppo-dot current"></div>
+                <div class="ppo-step-label">Active</div>
+              </div>
+              <div class="ppo-step">
+                <div class="ppo-dot"></div>
+                <div class="ppo-step-label">PPO Review</div>
+              </div>
+              <div class="ppo-step">
+                <div class="ppo-dot"></div>
+                <div class="ppo-step-label">Confirmed</div>
+              </div>
+            </div>
+          </div>
+          <div class="content-grid">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Client Time Allocation</div>
+              </div>
+              <div class="card-body">
+                <div class="submission-form">
+                  <div>
+                    <label class="form-label">Project / Task Reference</label
+                    ><input
+                      type="text"
+                      class="form-input"
+                      placeholder="e.g. Payment Gateway — Sprint 3"
+                    />
+                  </div>
+                  <div
+                    style="
+                      display: grid;
+                      grid-template-columns: 1fr 1fr;
+                      gap: 10px;
+                    "
+                  >
+                    <div>
+                      <label class="form-label">Date</label
+                      ><input type="date" class="form-input" />
+                    </div>
+                    <div>
+                      <label class="form-label">Hours Logged</label
+                      ><input
+                        type="number"
+                        class="form-input"
+                        placeholder="8"
+                        min="1"
+                        max="12"
+                      />
+                    </div>
+                  </div>
+                  <button
+                    class="btn-primary"
+                    style="border-radius: 12px"
+                    onclick="showToast('Time sheet submitted', 'success')"
+                  >
+                    Log Hours
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">PPO Conversion Metrics</div>
+              </div>
+              <div class="card-body">
+                <div class="ledger-row">
+                  <span class="ledger-key">Days Active at Client</span
+                  ><span class="ledger-val">87</span>
+                </div>
+                <div class="ledger-row">
+                  <span class="ledger-key">Tasks Completed</span
+                  ><span class="ledger-val">34 / 40</span>
+                </div>
+                <div class="ledger-row">
+                  <span class="ledger-key">Client Rating</span
+                  ><span class="ledger-val" style="color: var(--green)"
+                    >4.6 / 5</span
+                  >
+                </div>
+                <div class="ledger-row">
+                  <span class="ledger-key">Readiness Score</span
+                  ><span class="ledger-val" style="color: var(--purple)"
+                    >82 / 100</span
+                  >
+                </div>
+                <div
+                  style="
+                    margin-top: 12px;
+                    padding: 12px;
+                    background: rgba(168, 85, 247, 0.06);
+                    border-radius: 10px;
+                    font-size: 12px;
+                    color: var(--muted);
+                  "
+                >
+                  You need
+                  <strong style="color: var(--purple)">+3 more tasks</strong>
+                  and a
+                  <strong style="color: var(--purple)"
+                    >client rating above 4.5</strong
+                  >
+                  to trigger PPO review.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ──────────────── STAFF VIEWS ──────────────── -->
+
+        <div class="page-view" id="view-pipeline">
+          <div class="page-header">
+            <div>
+              <div class="page-title">B2B Pipeline</div>
+              <div class="page-desc">
+                Enterprise client registry and deployment matching board.
+              </div>
+            </div>
+            <button
+              class="btn-primary"
+              onclick="showToast('New client form opened', 'info')"
+            >
+              + Add Client
+            </button>
+          </div>
+          <div class="content-grid">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Active Pipelines</div>
+                <button class="card-action">Export</button>
+              </div>
+              <div class="card-body" style="padding: 0 20px">
+                <div class="pipeline-row">
+                  <div class="pipeline-company-icon">RZ</div>
+                  <div class="pipeline-info">
+                    <div class="pipeline-company">Razorpay</div>
+                    <div class="pipeline-stage">
+                      Active Deployment · 3 interns
+                    </div>
+                  </div>
+                  <span class="sprint-status status-active">Live</span>
+                </div>
+                <div class="pipeline-row">
+                  <div
+                    class="pipeline-company-icon"
+                    style="background: var(--purple)"
+                  >
+                    PB
+                  </div>
+                  <div class="pipeline-info">
+                    <div class="pipeline-company">PayByMe</div>
+                    <div class="pipeline-stage">
+                      Final Selection Stage · 1 intern
+                    </div>
+                  </div>
+                  <span class="sprint-status status-pending">Pending</span>
+                </div>
+                <div class="pipeline-row">
+                  <div
+                    class="pipeline-company-icon"
+                    style="background: #3b82f6"
+                  >
+                    FI
+                  </div>
+                  <div class="pipeline-info">
+                    <div class="pipeline-company">FinIQ Capital</div>
+                    <div class="pipeline-stage">
+                      Initial Outreach · Proposal sent
+                    </div>
+                  </div>
+                  <span class="sprint-status status-locked">Prospect</span>
+                </div>
+                <div class="pipeline-row">
+                  <div
+                    class="pipeline-company-icon"
+                    style="background: var(--amber)"
+                  >
+                    KY
+                  </div>
+                  <div class="pipeline-info">
+                    <div class="pipeline-company">Kyash Payments</div>
+                    <div class="pipeline-stage">
+                      Active Deployment · 2 interns
+                    </div>
+                  </div>
+                  <span class="sprint-status status-ppo">PPO Stage</span>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Deployment Kanban</div>
+              </div>
+              <div class="card-body" style="overflow-x: auto">
+                <div class="kanban-board">
+                  <div class="kanban-col">
+                    <div class="kanban-col-header">
+                      <span class="kanban-col-title">MATCHING POOL</span
+                      ><span class="kanban-count">3</span>
+                    </div>
+                    <div class="kanban-card" draggable="true">
+                      <div class="kanban-card-name">Aryan Mehta</div>
+                      <div class="kanban-card-meta">SDE · Cohort 6</div>
+                      <div class="kanban-card-score">
+                        <span class="score-badge">88</span
+                        ><span style="font-size: 10px; color: var(--muted)"
+                          >React, Node</span
+                        >
+                      </div>
+                    </div>
+                    <div class="kanban-card" draggable="true">
+                      <div class="kanban-card-name">Priya Sharma</div>
+                      <div class="kanban-card-meta">GTM · Cohort 6</div>
+                      <div class="kanban-card-score">
+                        <span class="score-badge">91</span
+                        ><span style="font-size: 10px; color: var(--muted)"
+                          >Deck, Figma</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="kanban-col">
+                    <div class="kanban-col-header">
+                      <span class="kanban-col-title">FINTECH SELECTION</span
+                      ><span class="kanban-count">2</span>
+                    </div>
+                    <div class="kanban-card" draggable="true">
+                      <div class="kanban-card-name">Rohan Das</div>
+                      <div class="kanban-card-meta">SDE · Cohort 5</div>
+                      <div class="kanban-card-score">
+                        <span class="score-badge">85</span
+                        ><span style="font-size: 10px; color: var(--muted)"
+                          >Python, SQL</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="kanban-col">
+                    <div class="kanban-col-header">
+                      <span class="kanban-col-title">ACTIVE DEPLOY</span
+                      ><span class="kanban-count">4</span>
+                    </div>
+                    <div class="kanban-card" draggable="true">
+                      <div class="kanban-card-name">Kavya Nair</div>
+                      <div class="kanban-card-meta">SDE · Razorpay</div>
+                      <div class="kanban-card-score">
+                        <span
+                          class="score-badge"
+                          style="
+                            background: rgba(111, 207, 74, 0.15);
+                            color: #3a7a1f;
+                          "
+                          >82</span
+                        ><span style="font-size: 10px; color: var(--muted)"
+                          >72% PPO</span
+                        >
+                      </div>
+                    </div>
+                    <div class="kanban-card" draggable="true">
+                      <div class="kanban-card-name">Dev Patel</div>
+                      <div class="kanban-card-meta">GTM · Kyash</div>
+                      <div class="kanban-card-score">
+                        <span
+                          class="score-badge"
+                          style="
+                            background: rgba(111, 207, 74, 0.15);
+                            color: #3a7a1f;
+                          "
+                          >79</span
+                        ><span style="font-size: 10px; color: var(--muted)"
+                          >65% PPO</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="kanban-col">
+                    <div class="kanban-col-header">
+                      <span class="kanban-col-title">PPO CONFIRMED</span
+                      ><span class="kanban-count">1</span>
+                    </div>
+                    <div
+                      class="kanban-card"
+                      draggable="true"
+                      style="border-color: var(--green)"
+                    >
+                      <div class="kanban-card-name">Simran Bajaj</div>
+                      <div class="kanban-card-meta">SDE · Kyash</div>
+                      <div class="kanban-card-score">
+                        <span
+                          class="score-badge"
+                          style="
+                            background: rgba(111, 207, 74, 0.15);
+                            color: #3a7a1f;
+                          "
+                          >96</span
+                        ><span
+                          style="
+                            font-size: 10px;
+                            color: var(--green);
+                            font-weight: 700;
+                          "
+                          >Alumni</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-view" id="view-talent">
+          <div class="page-header">
+            <div>
+              <div class="page-title">Talent Shortlister</div>
+              <div class="page-desc">
+                Filter and match high-readiness candidates to partner
+                requisitions.
+              </div>
+            </div>
+          </div>
+          <div class="search-bar">
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search by name, skills, or track…"
+              id="talentSearch"
+              oninput="filterTalent()"
+            />
+            <button
+              class="filter-chip active"
+              id="chipAll"
+              onclick="setChip('all')"
+            >
+              All
+            </button>
+            <button class="filter-chip" id="chipSDE" onclick="setChip('sde')">
+              SDE
+            </button>
+            <button class="filter-chip" id="chipGTM" onclick="setChip('gtm')">
+              GTM
+            </button>
+            <button class="filter-chip" id="chip85" onclick="setChip('high')">
+              Score ≥ 85
+            </button>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Candidate Pool</div>
+              <span
+                style="font-size: 12px; color: var(--muted)"
+                id="talentCount"
+                >12 profiles</span
+              >
+            </div>
+            <div class="card-body" style="padding: 0">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Candidate</th>
+                    <th>Track</th>
+                    <th>Skills</th>
+                    <th>Score</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="talentBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ──────────────── HR VIEWS ──────────────── -->
+
+        <div class="page-view" id="view-hr-leave">
+          <div class="page-header">
+            <div>
+              <div class="page-title">Leave Approvals</div>
+              <div class="page-desc">
+                Incoming leave requests awaiting authorization. Email webhooks
+                active.
+              </div>
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center">
+              <div
+                style="
+                  width: 8px;
+                  height: 8px;
+                  border-radius: 50%;
+                  background: var(--green);
+                  animation: pulse-dot 1.8s ease-in-out infinite;
+                "
+              ></div>
+              <span style="font-size: 12px; color: var(--muted)"
+                >Email Webhook Live</span
+              >
+            </div>
+          </div>
+          <div id="leaveRequestList"></div>
+        </div>
+
+        <div class="page-view" id="view-org">
+          <div class="page-header">
+            <div>
+              <div class="page-title">Identity Control</div>
+              <div class="page-desc">
+                Upgrade Demo IDs to Real IDs and manage onboarding flows.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">User Registry</div>
+              <button class="card-action" onclick="openAddUserModal()">
+                + Add User
+              </button>
+            </div>
+            <div class="card-body" style="padding: 0">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>User</th>
+                    <th>Role</th>
+                    <th>Identity</th>
+                    <th>Track</th>
+                    <th>Joined</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="userRegistryBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cohort Manager and Analytics views injected by hr.js at runtime -->
+
+        <!-- ──────────────── PAYROLL VIEWS ──────────────── -->
+        <!-- view-stipend: Intern sees personal stipend | HR sees stipend processor (rendered by payroll-ui.js) -->
+        <!-- view-salary: Staff personal salary (rendered by payroll-ui.js) -->
+        <!-- view-payroll-engine: HR full ledger (rendered by payroll-ui.js) -->
+        <!-- view-stipend-processor: HR stipend batch (rendered by payroll-ui.js) -->
+        <!-- view-payroll-analytics: HR analytics (rendered by payroll-ui.js) -->
+        <div class="page-view" id="view-stipend">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              min-height: 300px;
+              gap: 12px;
+              color: var(--muted);
+            "
+          >
+            <div class="card-icon-lg"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg></div>
+            <div style="font-size: 15px">Loading stipend…</div>
+          </div>
+        </div>
+        <div class="page-view" id="view-salary">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              min-height: 300px;
+              gap: 12px;
+              color: var(--muted);
+            "
+          >
+            <div class="card-icon-lg"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+            <div style="font-size: 15px">Loading salary…</div>
+          </div>
+        </div>
+        <div class="page-view" id="view-payroll-engine">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              min-height: 300px;
+              gap: 12px;
+              color: var(--muted);
+            "
+          >
+            <div class="card-icon-lg"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></div>
+            <div style="font-size: 15px">Loading payroll engine…</div>
+          </div>
+        </div>
+        <div class="page-view" id="view-stipend-processor">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              min-height: 300px;
+              gap: 12px;
+              color: var(--muted);
+            "
+          >
+            <div class="card-icon-lg"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <div style="font-size: 15px">Loading stipend processor…</div>
+          </div>
+        </div>
+        <div class="page-view" id="view-payroll-analytics">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              min-height: 300px;
+              gap: 12px;
+              color: var(--muted);
+            "
+          >
+            <div class="card-icon-lg"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg></div>
+            <div style="font-size: 15px">Loading analytics…</div>
+          </div>
+        </div>
+        <!-- LEGACY: view-payroll kept for compatibility, redirected by JS -->
+        <div class="page-view" id="view-payroll">
+          <div class="page-header">
+            <div>
+              <div class="page-title">My Payroll</div>
+              <div class="page-desc">
+                Your stipend history, deductions and payment status.
+              </div>
+            </div>
+            <button class="btn-primary" onclick="exportPayrollCSV()">
+              Export CSV
+            </button>
+          </div>
+          <div class="stats-grid cols-3" id="payrollStatsRow">
+            <div class="stat-card purple-card">
+              <div class="stat-label">This Month</div>
+              <div class="stat-value" id="ps-thisMonth">—</div>
+              <div class="stat-delta" id="ps-month">Loading…</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Total Received</div>
+              <div class="stat-value" id="ps-total">—</div>
+              <div class="stat-delta">All time</div>
+            </div>
+            <div class="stat-card dark-card">
+              <div class="stat-label">Deductions</div>
+              <div class="stat-value" id="ps-deductions">—</div>
+              <div class="stat-delta">This month</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Payroll History</div>
+              <span
+                id="payrollStatusMsg"
+                style="font-size: 12px; color: var(--muted)"
+              ></span>
+            </div>
+            <div class="card-body" style="padding: 0">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Month</th>
+                    <th>Employee / Role</th>
+                    <th>Base</th>
+                    <th>Bonus</th>
+                    <th>Deductions</th>
+                    <th>Net Pay</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="payrollTableBody">
+                  <tr>
+                    <td
+                      colspan="7"
+                      style="
+                        text-align: center;
+                        padding: 24px;
+                        color: var(--muted);
+                      "
+                    >
+                      Loading payroll data…
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ──────────────── COHORT MANAGEMENT ──────────────── -->
+        <div class="page-view" id="view-cohorts">
+          <div class="page-header">
+            <div>
+              <div class="page-title">Cohort Manager</div>
+              <div class="page-desc">
+                Create cohorts, assign students, monitor readiness and pipeline.
+              </div>
+            </div>
+            <button class="btn-primary" onclick="openCohortCreateModal()">
+              + New Cohort
+            </button>
+          </div>
+          <div
+            id="cohortGrid"
+            class="ls-cards"
+            style="margin-bottom: 24px"
+          ></div>
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">Student Assignment</div>
+              <button class="card-action" onclick="refreshCohorts()">
+                ↻ Refresh
+              </button>
+            </div>
+            <div class="card-body" style="padding: 0">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Student</th>
+                    <th>Cohort</th>
+                    <th>Track</th>
+                    <th>Readiness</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="cohortStudentBody">
+                  <tr>
+                    <td
+                      colspan="6"
+                      style="
+                        text-align: center;
+                        padding: 24px;
+                        color: var(--muted);
+                      "
+                    >
+                      Loading students…
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ──────────────── COHORT CREATE MODAL (inline) ──────────────── -->
+        <div class="modal-overlay" id="cohortModal">
+          <div class="modal-card" style="position: relative">
+            <button class="modal-close" onclick="closeCohortCreateModal()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            <div class="modal-title">New Cohort</div>
+            <div class="modal-subtitle">
+              Set up a new training cohort intake.
+            </div>
+            <div class="form-group">
+              <label class="form-label">Cohort Name</label
+              ><input
+                type="text"
+                class="form-input"
+                placeholder="e.g. Cohort 8 — July 2026"
+                id="cohortName"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Start Date</label
+              ><input type="date" class="form-input" id="cohortStart" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Track</label
+              ><select class="form-select" id="cohortTrack">
+                <option value="SDE">SDE</option>
+                <option value="GTM">GTM</option>
+                <option value="Both">Both Tracks</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Max Capacity</label
+              ><input
+                type="number"
+                class="form-input"
+                placeholder="60"
+                id="cohortCapacity"
+              />
+            </div>
+            <button
+              class="btn-primary"
+              style="width: 100%; margin-top: 8px; border-radius: 12px"
+              onclick="createCohort()"
+            >
+              Create Cohort
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ═══════════════════════════════ TOAST CONTAINER ═══════════════════════════════ -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ═══════════════════════════════ ENTRY POINT ═══════════════════════════════ -->
+    <script src="scripts/app.js"></script>
+
+    <script src="modules/auth.js"></script>
+    <script src="modules/student.js"></script>
+    <script src="modules/staff.js"></script>
+    <script src="modules/hr.js"></script>
+
+    <script src="modules/landing.js"></script>
+    <script src="modules/register.js"></script>
+    <script src="modules/notifications.js"></script>
+    <script src="modules/leave_ui.js"></script>
+    <script src="modules/payroll-ui.js"></script>
+    <script src="modules/cohorts-ui.js"></script>
+    <script src="modules/tasks-ui.js"></script>
+
+    <!-- ══════════════ ADD USER MODAL ══════════════ -->
+    <div class="modal-overlay" id="addUserModal">
+      <div
+        class="modal-card"
+        style="
+          width: 460px;
+          max-width: 95vw;
+          position: relative;
+          padding: 36px 40px;
+        "
+      >
+        <button class="modal-close" onclick="closeAddUserModal()"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+        <div class="modal-title" style="font-size: 22px; margin-bottom: 4px">
+          Add New User
+        </div>
+        <div class="modal-subtitle">Create a new account in the registry</div>
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input
+            class="form-input"
+            id="auName"
+            type="text"
+            placeholder="e.g. Priya Singh"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input
+            class="form-input"
+            id="auEmail"
+            type="email"
+            placeholder="user@antbox.io"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input
+            class="form-input"
+            id="auPwd"
+            type="password"
+            placeholder="Min. 6 characters"
+          />
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px">
+          <div class="form-group">
+            <label class="form-label">Role</label>
+            <select
+              class="form-input"
+              id="auRole"
+              style="border-radius: 12px; cursor: pointer"
+            >
+              <option value="student">Bootcamp Student</option>
+              <option value="intern">Active Intern</option>
+              <option value="staff">Internal Staff</option>
+              <option value="admin">HR / Admin</option>
+              
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Track</label>
+            <select
+              class="form-input"
+              id="auTrack"
+              style="border-radius: 12px; cursor: pointer"
+            >
+              <option value="SDE">SDE</option>
+              <option value="GTM">GTM</option>
+              <option value="PROD">PROD</option>
+              <option value="OPS">OPS</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">College / Organisation (optional)</label>
+          <input
+            class="form-input"
+            id="auCollege"
+            type="text"
+            placeholder="e.g. IIT Delhi"
+          />
+        </div>
+        <div
+          id="auError"
+          style="
+            color: #ef4444;
+            font-size: 13px;
+            margin-bottom: 8px;
+            display: none;
+          "
+        ></div>
+        <div
+          style="
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 8px;
+          "
+        >
+          <button class="btn-ghost" onclick="closeAddUserModal()">
+            Cancel
+          </button>
+          <button
+            class="btn-primary"
+            id="auSubmitBtn"
+            onclick="submitAddUser()"
+          >
+            Create User
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
